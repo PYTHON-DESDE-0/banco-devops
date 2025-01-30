@@ -1,0 +1,10 @@
+
+services:
+
+  fastapi-server:
+    build: .
+    ports:
+      - $PUERTO_FASTAPI:80
+
+
+
