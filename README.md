@@ -32,7 +32,31 @@ pensando en el uso de contenedores.
 
 ### Frontend
 
-(NO IMPLEMENTADO)
+
+#### Despliegue manual
+
+
+
+
+
+```bash
+cd flet-test
+podman build  -t imagen-flet  
+```
+
+**IMPORTANTE:** Corregir la línea CMD del Dockerfile
+
+```bash
+export PUERTO_FLET=8000
+podman run  --replace --name flet-test  -p$PUERTO_FLET:8000  imagen-flet
+```
+
+
+#### Despliegue automático
+
+NO IMPLEMENTADO AUN
+
+
 
 ### Backend
 
@@ -50,6 +74,7 @@ cd fastapi-test
 podman build  -t imagen-fastapi  .
 ```
 La imagen creada se llama en este ejemplo `imagen-fastapi`.
+La etiqueta asignada a la imagen por defecto es `latest`.
 
 Ahora se crea un contenedor con nombre `contenedor-fastapi` y se pone en marcha en el puerto que se elija:
 
@@ -79,7 +104,7 @@ http://127.0.0.1:8000
 El demo también deja visitar URIS internas dentro de la ruta `items` dentro de la URL:
 
 ```http
-http://localhost:32000/items/8
+http://localhost:8000/items/8
 ```
 
 

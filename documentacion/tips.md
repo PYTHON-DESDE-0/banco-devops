@@ -84,7 +84,7 @@ https://pythonspeed.com/articles/alpine-docker-python/
 
 Imágenes oficiales de Python disponibles en DockerHub:
 
-https://hub.docker.com/_/python/
+[DockerHub - Python Images](https://hub.docker.com/_/python/)
 
 
 ## FastAPI
@@ -130,9 +130,31 @@ Multiples "workers" (contenedores) en Docker/Kubernetes corriendo `fastapi` o `u
 https://fastapi.tiangolo.com/deployment/server-workers/?h=dock#deployment-concepts
 
 
+### Lifespan events
+
+Es código que se ejecuta solamente una vez antes de arrancar el servidor.
+
+Se requiere que el Dockerfile use la instrucción `CMD`
+en la forma "exec":
+``` Dockerfile
+CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+```
+Yno en la forma "shell":
+
+``` Dockerfile
+CMD fastapi run app/main.py --port 80
+```
+
+
+[FastAPI - Lifespan events](https://fastapi.tiangolo.com/advanced/events/)
+
 ### Cliente Fastapi vs Uvicorn vs Gunicorn
 
     ????
+
+    [Ver sobre los servidores de Python](servidores.md)
+
+
 
 ### Incompatibilidades
 
@@ -148,6 +170,38 @@ python:3.9.21-alpine3.21
 python:3.9.21-slim-bullseye    
 python:3.9.21-bullseye      
 ```
+
+
+### Conexion con SQL - SQLModel 
+
+Del creador de FastAPI, 
+SQLModel es un conector de bases de datos
+basado en SQLAlchemy
+e incluye tipado
+heredado de Pydantic. 
+
+Está pensado para facilitar la conexión de bases de datos con los servidores implementados con FastAPI.
+
+[SQLModel - Página oficial](https://sqlmodel.tiangolo.com)
+
+[SQLModel - testing](https://sqlmodel.tiangolo.com/tutorial/fastapi/tests/#fastapi-application)
+
+
+### Extras:
+
+
+- [CodevoWeb - Acceso y tokens](https://codevoweb.com/restful-api-with-python-fastapi-access-and-refresh-tokens)
+
+- [CodevoWeb - Emails ](https://codevoweb.com/restful-api-with-python-fastapi-send-html-emails)
+
+- [CodevoWeb - RESTful API con PostgreSQL](https://codevoweb.com/crud-restful-api-server-with-python-fastapi-and-postgresql/)
+
+
+
+
+
+
+
 
 ## FLET
 
@@ -172,7 +226,7 @@ flet create
 ```
 Incluye archivos de configuracion:
 
-https://flet.dev/docs/getting-started/create-flet-app
+[flet.dev - Create a new Flet app](https://flet.dev/docs/getting-started/create-flet-app)
 
 
 ### Ejecución
@@ -187,7 +241,7 @@ Servidor, puerto específico:
 flet run --web --port 8000 app.py
 ```
 
-https://flet.dev/docs/publish/web/dynamic-website/#running-the-app-in-production
+[Flet.dev - Host app as a dynamic website](https://flet.dev/docs/publish/web/dynamic-website/#running-the-app-in-production)
 
 
 
@@ -199,7 +253,7 @@ https://flet.dev/docs/publish/web/dynamic-website/#running-the-app-in-production
 configurar `/etc/nginx/sites-available/*` 
 
 
-https://flet.dev/docs/publish/web/dynamic-website/hosting/self-hosting
+[Flet.dev - Self Hosting](https://flet.dev/docs/publish/web/dynamic-website/hosting/self-hosting)
 
 
 ### Crear sitio estático:
@@ -224,10 +278,14 @@ python -m http.server --directory build/web
 
 
 
-https://flet.dev/docs/publish/web/static-website
+[Flet.dev - Publish app to a static website](https://flet.dev/docs/publish/web/static-website)
 
 
+### Crear apps con Flet
 
+Las instrucciones exactas varían con el sistema operativo destino.
+
+[Flet.dev - Publishing Flet app to multiple platforms](https://flet.dev/docs/publish)
 
 
 
