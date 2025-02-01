@@ -1,5 +1,8 @@
 
-## Consideraciones preliminares
+
+# Consideraciones preliminares
+
+## Despliegue (*deploy*)
 
 ### Modo manual
 
@@ -85,3 +88,7 @@ PostgreSQL es uno de los gestores de bases de datos
 más populares y potentes
 Es de código abierto y destaca el manejo de bases de datos grandes. 
 Hay múltiples servicios online que ofrecen su despliegue.
+
+
+
+

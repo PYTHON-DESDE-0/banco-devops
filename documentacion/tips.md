@@ -172,11 +172,19 @@ python:3.9.21-bullseye
 ```
 
 
-### Conexion con SQL - SQLModel 
+### Conexion con SQL 
+
+### - SQLAlchemy
+
+Uno de los ORMs más conocidos escritos para Python.
+
+[Página oficial de  SQLAlchemy](https://docs.sqlalchemy.org/en/20/intro.html)
+
+#### - SQLModel 
 
 Del creador de FastAPI, 
 SQLModel es un conector de bases de datos
-basado en SQLAlchemy
+**basado en SQLAlchemy**
 e incluye tipado
 heredado de Pydantic. 
 

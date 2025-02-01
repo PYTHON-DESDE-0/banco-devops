@@ -24,7 +24,13 @@ pensando en el uso de contenedores.
 
 [Apuntes, tips y borradores](documentacion/tips.md) 
 
+## Tipos de servidores
 
+[Información sobre servidores en Python](documentacion/servidores.md)
+
+## Componentes adicionales (discutibles)
+
+[Posibles componentes adicionales](documentacion/adicionales.md)
 
 
 ## Despliegue (*deploy*)
