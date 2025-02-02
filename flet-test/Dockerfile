@@ -8,5 +8,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt --upgrade pip
 
 COPY ./src /code/src
 
+EXPOSE 8000
 
-CMD ["flet", "run", "src/main.py","--web", "--port", "8000"]
+CMD ["uvicorn", "src.main:app", "--port", "8000", "--host", "0.0.0.0"]
+

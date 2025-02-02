@@ -23,4 +23,5 @@ def main(page: ft.Page):
     )
 
 
-ft.app(main)
+# ft.app(main)
+app = ft.app(main, export_asgi_app=True)
