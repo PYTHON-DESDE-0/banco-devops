@@ -1,81 +1,6 @@
 # Tips
 
 
-## Imagenes Docker
-
-### Distribuciones base:
-
-|Distribución base| Nombre clave| 
-|:---|:---:|
-|Alpine|`alpine`|
-|Debian 8 |`jessie`|
-|Debian 9 |`stretch`|
-|Debian 10|`buster`|
-|Debian 11|`bullseye`|
-|Debian 12|`bookworm`|
-|Ubuntu 16.04|`xenial`|
-|Ubuntu 18.04|`bionic`|
-|Ubuntu 20.04|`focal`|
-|Ubuntu 22.04|`jammy`|
-|Ubuntu 23.10|`mantic`|
-|Ubuntu 24.04|`noble`|
-
-
-
-Alpine usa el gestor de paquetes `apk`
-en tanto que Debian y Ubunto usan `apt`.
-
-Alpine tiene una *shell* en `/bin/sh`.
-
-Todas tienen una *shell* en `/bin/bash`.
-
-https://stackoverflow.com/questions/52083380/in-docker-image-names-what-is-the-difference-between-alpine-jessie-stretch-an
-
-https://medium.com/@faruk13/alpine-slim-bullseye-bookworm-noble-differences-in-docker-images-explained-d9aa6efa23ec
-
-### Versiones "slim":
-
-Las versiones *slim* son versiones "rebajadas" de las imágenes
-(documentacion eliminada, archivos extra quitados, etc)
-y tienen menos capas. 
-Gracias a ello estas versiones ocupan menos espacio en disco cuando están en solitario;
-sin embargo pueden ocupar más espacio en total que sus versiones completas cuando comparten disco con otras versiones.
-
-
-https://medium.com/@faruk13/alpine-slim-bullseye-bookworm-noble-differences-in-docker-images-explained-d9aa6efa23ec
-
-
-### Componentes en C
-
-La mayoría de las distribuciones Linux,
-incluyendo Debian y Ubuntu,
-trabajan con `glibc` (GNU C library) y `coreutils`
-(GNU coreutils).
-Alpine usa en cambio `musl libc` y `Busybox`.
-Esto hace que los lenguajes y programas que dependen de C
-(por ejemplo, el intérprete oficial de Python) 
-funcionen diferente.
-
-
-### Alpine es problemático para trabajar con Python
-
-- Tiempos de instalación exageradamente largos;
-- Imágenes creadas más voluminosas, 
-aún eliminando caché interna;
-- La mayoria de los desarrolladores de Python
-no cumplen las dependencias del programa
-con los paquetes del sistema
-sino que usan los paquetes de PyPi o Conda Forge.
-
-- Bugs inesperados:
-    - `msl` no soporta DNS sobre TCP,
-    lo cual puede hacer fallar la configuración de Kubernetes;
-    - Pila más chica para los hilos, que pueden hacer crashear a Python;
-    - Reserva de memoria dinámica mucho más lenta.
-
-
-https://pythonspeed.com/articles/alpine-docker-python/
-
 
 
 ## Python
@@ -294,8 +219,5 @@ python -m http.server --directory build/web
 Las instrucciones exactas varían con el sistema operativo destino.
 
 [Flet.dev - Publishing Flet app to multiple platforms](https://flet.dev/docs/publish)
-
-
-
 
 

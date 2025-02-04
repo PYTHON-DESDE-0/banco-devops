@@ -43,10 +43,13 @@ En principio serían tres servicios monolíticos:
 
 La regla básica de asignación sería: un servicio - un contenedor.
 
-**PENDIENTE**
+<!-- 
 Sería interesante 
 fragmentar los bloques predefinidos en microservicios
-y
+y 
+-->
+
+Es posible que estos bloques sean fragmentados a futuro en microservicios para 
 poder acomodarlos con topologías como:
 
 - Paquete por capa;
