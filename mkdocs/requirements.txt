@@ -6,8 +6,8 @@ mkdocs-material[imaging]
 # paquetes agregados
 # mkdocs-glightbox  # mejora para imágenes
 
-# mkdocs-git-revision-date-localized-plugin     # fechas edicion
-# mkdocs-git-committers-plugin-2            # link a autores del documento
+mkdocs-git-revision-date-localized-plugin     # fechas edicion
+mkdocs-git-committers-plugin-2            # link a autores del documento
 # mkdocs-git-authors-plugin                 # links a los mails de autores  
 
 # mkdocs-rss-plugin # agregador RSS (blog)

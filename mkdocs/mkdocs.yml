@@ -13,10 +13,7 @@ repo_name: banco-devops
 
 # ruta a los documentos
 # docs_dir: docs/
-# docs_dir: ../despliegue/
-docs_dir: ../../documentacion/
-
-
+docs_dir: ../documentacion/
 
 
 theme:
@@ -71,6 +68,7 @@ theme:
     - navigation.tracking
     # pestañas de contenido
     - navigation.tabs
+    # - navigation.tabs.sticky
     # - navigation.sections   # Muestra títulos para los contenidos en la barra izquierda
     # - navigation.expand     # Expansión - Expande la lista de contenidos por defecto
     # - navigation.prune      # Poda - Quita la lista de contenidos no visibles
@@ -119,15 +117,21 @@ plugins:
   - privacy
   - search
 
+  # fechas de repositorio
+  - git-revision-date-localized:
+      enabled: true
+      enable_creation_date: true
+      type: date        # fecha
+      fallback_to_build_date: true
+  # contribuyentes
+  - git-committers:
+      repository: nombre_usuario/nombre_repositorio
+      branch: master      # rama a seguir
+      enabled: true
+        
   - group:
       enabled: !ENV CI
       plugins:
-      # # fechas de repositorio
-      # - git-revision-date-localized:
-      #     enabled: true
-      #     enable_creation_date: true
-      #     type: date        # fecha
-      #     fallback_to_build_date: true
       # # blog (todo)
       # - blog:
       #     # blog_dir: .
@@ -174,10 +178,12 @@ plugins:
 
 nav:
   - Despliegue:
-      - despliegue/consideraciones.md
+    # - General:
+    - despliegue/consideraciones.md
+    - Contenedores:
       - despliegue/imagenes.md
       - despliegue/python.md
-      # borradores
+    - Borradores:
       - despliegue/adicionales.md
       - despliegue/servidores.md
       - despliegue/tips.md
