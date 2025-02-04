@@ -1,0 +1,12 @@
+services:
+
+  contenedor_mkdocs:
+    build: .   # 'Dockerfile' en la ruta actual de archivo
+    ports:
+      - "${PUERTO:-8000}:8000"
+    security_opt: 
+      - label=disable
+    volumes:
+      - ./:/docs
+    stdin_open: true
+    tty: true

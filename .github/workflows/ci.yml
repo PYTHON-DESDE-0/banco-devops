@@ -5,6 +5,7 @@ on:
       - master 
       - main
       - devops-docs   # BORRAR!
+
 permissions:
   contents: write
 jobs:
@@ -27,6 +28,5 @@ jobs:
           restore-keys: |
             mkdocs-material-
 
-      - run: cd mkdocs/
-      - run: pip install -r requirements.txt
+      - run: pip install -r requirements-mkdocs.txt
       - run: CI=true mkdocs gh-deploy --force

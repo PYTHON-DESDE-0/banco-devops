@@ -13,7 +13,7 @@ repo_name: banco-devops
 
 # ruta a los documentos
 # docs_dir: docs/
-docs_dir: ../documentacion/
+docs_dir: documentacion/
 
 
 theme:
@@ -187,4 +187,6 @@ nav:
       - despliegue/adicionales.md
       - despliegue/servidores.md
       - despliegue/tips.md
+      - despliegue/mkdocs.md
+
 

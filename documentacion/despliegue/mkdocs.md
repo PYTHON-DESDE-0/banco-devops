@@ -24,3 +24,21 @@ y un archivo de configuración llamado `mkdocs.yml`.
 mkdocs serve
 mkdocs serve -a localhost:numero_puerto
 ```
+
+
+
+## Contenedores
+
+### Crear imagen (manual)
+
+```bash
+podman build  -t imagen-mkdocs  .
+```
+
+### Crear contenedor (manual)
+
+```bash
+podman build  -t imagen-mkdocs  .
+```
+
+

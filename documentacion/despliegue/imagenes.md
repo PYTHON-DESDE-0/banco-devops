@@ -1,5 +1,5 @@
 
-# Imagenes de Docker
+# Imágenes de Docker
 
 
 En esta sección se discute qué posibles imágenes 
