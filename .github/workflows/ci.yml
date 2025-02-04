@@ -4,7 +4,7 @@ on:
     branches:
       - master 
       - main
-      - devops-docs   # BORRAR!
+
 
 permissions:
   contents: write
