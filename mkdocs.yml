@@ -184,6 +184,7 @@ nav:
       - despliegue/imagenes.md
       - despliegue/python.md
     - Borradores:
+      - despliegue/postgres.md
       - despliegue/adicionales.md
       - despliegue/servidores.md
       - despliegue/tips.md

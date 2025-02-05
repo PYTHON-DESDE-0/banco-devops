@@ -65,5 +65,6 @@ Están pensadas para su uso para programas que requieran correr .NET u otros com
 
 ## Referencias
 
+[Docker Hub - Python](https://hub.docker.com/_/python/)
 
 [Python Speed - Using Alpine can make Python Docker builds 50× slower](https://pythonspeed.com/articles/alpine-docker-python/)
