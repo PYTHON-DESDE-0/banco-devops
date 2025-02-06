@@ -12,7 +12,6 @@ repo_name: banco-devops
 # copyright: Copyright &copy; 2025
 
 # ruta a los documentos
-# docs_dir: docs/
 docs_dir: documentacion/
 
 
@@ -21,35 +20,39 @@ theme:
   icon: 
     # logo: fontawesome/solid/user-nurse
     annotation: material/arrow-right-circle
-    logo: simple/python  # :simple-python:
+    logo: material/bank  # :material-bank:
     # Icono de repositorio
     repo: fontawesome/brands/github
 
   language: es
   # Modos para la pagina
   palette:
+    # Modo automático
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/lightbulb-auto
+        name: Cambia al modo claro
     # Modo claro
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/lightbulb  
         name: Cambia al modo oscuro
-      primary: indigo
-      # primary: custom
-      accent: purple
+      primary: blue grey
+      accent: blue
     # Modo oscuro
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/lightbulb-outline
-        name: Cambia al modo claro
-      primary: indigo
-      # primary: custom
-      accent: lime
+        name: Cambia al modo automático
+      primary: blue grey
+      accent: blue
+
 
   features:
     - header.autohide
-    # - navigation.footer
+    - navigation.footerq
     # - navigation.instant
     - content.code.copy
     - content.code.select
@@ -58,9 +61,9 @@ theme:
     - search
     - search.suggest
     - search.highlight
-    # - search.share
-    # - search:
-    #   lang: es
+    - search.share
+    - search:
+      lang: es
     - toc.follow
     - navigation.top  # boton emergente para volver al inicio  - aparece al intentar subir con el scroll
 
