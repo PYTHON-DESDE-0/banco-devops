@@ -1,5 +1,8 @@
 # FLET (TEST)
-FROM python:3.13.1-bookworm     
+
+ARG VERSION=3.13.1-slim-bookworm 
+FROM python:${VERSION}     
+# FROM python:3.13.1-bookworm     
 
 WORKDIR /code
 
