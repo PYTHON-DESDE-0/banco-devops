@@ -19,7 +19,7 @@ Estas están implementadas sobre imágenes tanto de Debian como de Alpine.
 
 ```bash
 POSTGRES_PASSWORD   # contraseña (OBLIGATORIA)
-POSTGRES_USER       # usuario  
+POSTGRES_USER       # usuario ('postgres' por default)
 POSTGRES_DB         # nombre para nueva base de datos
 ```
 
@@ -38,6 +38,15 @@ services:
 
 sin embargo los datos sensibles quedan expuestos.
 
+!!! danger "Exposicion de datos"
+
+    Los datos de configuración quedan a la vista de cualquiera con este método.
+    Opciones alternativas:
+
+     - **archivo `.env`** con las variables de entorno gardadas;
+     - ***"secrets"*** de Docker.
+
+
 
 ## Puertos
 
@@ -47,6 +56,7 @@ son siempre del tipo TCP.
 
 Para hacer el 'mapeo' de puertos
 a un puerto distinto
+del sistema anfitrión,
 desde el archivo Compose se hace:
 
 ```yaml
@@ -62,7 +72,7 @@ en este ejemplo se expone el puerto 9000 para que Postgres pueda ser consultado.
 ## Volumenes
 
 Los gestores de contenedores borran toda la data interna
-de los contenedores 
+de los contenedores
 cada vez que los cierran.
 Debido a la naturaleza persistente de las bases de datos,
 es indispensable crear *volúmenes* (almacenamientos persistentes) para que el ORM le asigne los datos adentro
@@ -101,6 +111,33 @@ volumes:
   volumen-db:       # creación volumen
     external: true  # debe ser preexistente
 ```
+
+!!! info "Volumenes - Creacion manual"
+
+    Los volúmenes se crean manualmente con Docker mediante la terminal:
+
+    ```bash
+    docker volume create  nombre_volumen
+    ```
+
+    Y la ubicacíón de su información guardada aparecerá en la ruta del sistema anfitrión indicada por:
+
+    ```bash
+    docker volume inspect --format {{.Mountpoint}}  nombre_volumen
+    ```
+    Rutas habituales:
+
+    === "Windows"
+
+        ```bash
+        ???
+        ```
+
+    === "GNU/Linux"
+
+        ```bash
+        /home/USUARIO/.local/share/containers/storage/volumes/volumen_exterior/_data
+        ```
 
 
 

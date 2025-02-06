@@ -54,6 +54,7 @@ theme:
     - content.code.copy
     - content.code.select
     - content.code.annotate
+    - content.tabs.link
     - search
     - search.suggest
     - search.highlight
@@ -183,8 +184,8 @@ nav:
     - Contenedores:
       - despliegue/imagenes.md
       - despliegue/python.md
-    - Borradores:
       - despliegue/postgres.md
+    - Borradores:
       - despliegue/adicionales.md
       - despliegue/servidores.md
       - despliegue/tips.md
