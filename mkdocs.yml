@@ -184,6 +184,7 @@ nav:
   - Despliegue:
     # - General:
     - despliegue/consideraciones.md
+    - despliegue/pruebas.md
     - Contenedores:
       - despliegue/imagenes.md
       - despliegue/python.md
