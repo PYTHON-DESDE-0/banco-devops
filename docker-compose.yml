@@ -4,7 +4,7 @@ services:
     restart: always
     build: .   # 'Dockerfile' en la ruta actual de archivo
     ports:
-      - '${PUERTO_MKDOCS:-8000}:8000'
+      - ${PUERTO_MKDOCS:-9003}:8000
     security_opt: 
       - label=disable
     volumes:
@@ -17,14 +17,15 @@ services:
     restart: always
     build: tests/fastapi/
     ports:
-      - '${PUERTO_FASTAPI:-8001}:80'
+      - ${PUERTO_FASTAPI:-9001}:8000
 
 
   flet-test:
     restart: always
     build: tests/flet/
     ports:
-      - '${PUERTO_FLET:-8002}:8000'
+      - ${PUERTO_FLET:-9002}:8000
+
 
 
   postgres-test:
@@ -36,7 +37,7 @@ services:
       POSTGRES_USER:      "postgres"
       POSTGRES_DB:        "test-db"
     ports:
-      - '${PUERTO_POSTGRES:-9000}:5432'
+      - ${PUERTO_POSTGRES:-9000}:5432
     volumes:
       - 'db-test-data:/var/lib/postgresql/data'
 
