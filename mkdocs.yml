@@ -49,7 +49,6 @@ theme:
       primary: blue grey
       accent: blue
 
-
   features:
     - header.autohide
     - navigation.footerq
@@ -181,6 +180,7 @@ plugins:
 
 
 nav:
+  - Introducción: index.md
   - Despliegue:
     # - General:
     - despliegue/consideraciones.md
@@ -190,6 +190,7 @@ nav:
       - despliegue/python.md
       - despliegue/postgres.md
     - Borradores:
+      - despliegue/sqlmodel.md
       - despliegue/adicionales.md
       - despliegue/servidores.md
       - despliegue/tips.md

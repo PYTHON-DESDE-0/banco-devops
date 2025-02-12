@@ -2,7 +2,7 @@
 
 ## Demo
 
-Para correr las prurbas preliminares
+Para correr las pruebas preliminares
 se creó el archivo `docker-compose.yaml`
 que ya incluye todas las configuraciones predefinidas 
 para el despliegue de los contenedores.
