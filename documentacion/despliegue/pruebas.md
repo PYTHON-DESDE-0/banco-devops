@@ -2,53 +2,62 @@
 
 ## Demo
 
-Para correr las pruebas preliminares
-se creó el archivo `docker-compose.yaml`
-que ya incluye todas las configuraciones predefinidas 
-para el despliegue de los contenedores.
+Como primer acercamiento a la integración y despliegue del proyecto
+se hizo una carpeta `tests` donde se organizan todos los componentes de ejemplo.
+
+La estructura interna es aproximadamente la siguiente:
 
 
-## Compose
-
-Sólo hay que ubicarse con la terminal
-en la carpeta del proyecto
-y ejecutar el comando `compose`:
-
-```bash
-docker compose up
+```bash title="Demo - estructura"
+tests
+├── db.env
+├── docker-compose.yml
+├── fastapi
+│   ├── app
+│   │   ├── __init__.py
+│   │   └── main.py
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   └── requirements.txt
+├── flet
+│   ├── Dockerfile
+│   ├── pyproject.toml
+│   ├── requirements.txt
+│   └── src
+│       ├── assets
+│       └── main.py
+└── sqlmodel
+    ├── Dockerfile
+    ├── requirements.txt
+    └── src
+        └── main.py
 ```
 
-Hay que esperar hasta que se complete la puesta en marcha,
-la cual puede requerir varios minutos.
-Docker descargará las imágenes faltantes de manera automática
-y generará las imágenes derivadas
-a partir de los archivos `Dockerfile`
-cuyas rutas se indica en el archivo `docker-compose.yaml`
+- Para correr las pruebas preliminares en Docker
+se creó el archivo `docker-compose.yml`,
+el cual se encuentra en la carpeta `tests`.
+Este archivo ya incluye todas las configuraciones predefinidas 
+para el despliegue de los contenedores.
+
+- El archivo `db.env` es el encargado de guardar
+los valores de configuración.
+
+- Cada framework o componente de Python utilizado
+tiene su propia carpeta interna, incluyendo:
+    - su rutina de demo `main.py`;
+    - su archivo de dependencias `requirements.txt`;
+    - su archivo `Dockerfile` para que Docker pueda crear las imágenes necesarias.
+
+    También es posible desplegar los componentes del demo mediante entornos virtuales usando múltiples *shells*,
+    aunque este método es el más engorroso.
 
 
-## Dockerfile
-
-Los archivos `Dockerfile` son los encargados de configurar
-la creación de las imágenes necesarias para los contenedores,
-determinando la imagen de base, 
-instalando componentes necesarios, 
-copiando las rutinas, 
-etc.
 
 
-!!! warning "Imágenes previas"
+## Funcionamiento
 
-    En caso de realizar modificaciones en el código fuente,
-    es prudente **eliminar las imágenes creadas** automáticamente
-    con los archivos `Dockerfile`
-    antes de invocar al comando `compose`.
-    De otra manera, puede pasar que se sigan usando 
-    las versiones antiguas de las imágenes creadas
-    y 
-    por ello el comportamiento del sistema no cambie nunca.
 
-    
-## Conexiones por navegador
+### Conexiones por navegador
 
 
 Una vez completada la puesta en marcha,
@@ -97,9 +106,10 @@ http://localhost:9003/
 ```
 
 dando lugar a la presente documentación.
+Los archivos de texto y de configuración están afuera del directorio del test,
+porque son relevantes para todo el proyecto.
 
-
-## Bases de datos
+### Bases de datos
 
 De momento, la única base de datos utiliza el puerto **9000**.
 Se usa un cliente para base de datos
@@ -114,3 +124,13 @@ y se crea una conexión para base de datos con los siguientes parámetros:
 |nombre database|`test-db`|
 
 El cliente debería ser capaz de conectarse y mostrar las bases de datos internas `postgres` (se crea por default) y `test-db`.
+
+
+### Cliente de base de datos
+
+Se implementó un cliente que hace una única petición a la base de datos
+y se detiene.
+La petición consiste en crear una tabla llamada `hero` y agregarle tres filas de datos.
+Si la tabla ya existe entonces se repiten las filas de datos.
+
+

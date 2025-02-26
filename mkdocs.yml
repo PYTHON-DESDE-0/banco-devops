@@ -71,11 +71,15 @@ theme:
     - navigation.tracking
     # pestañas de contenido
     - navigation.tabs
+    # pie de navegacion
+    - navigation.footer
     # - navigation.tabs.sticky
     # - navigation.sections   # Muestra títulos para los contenidos en la barra izquierda
     # - navigation.expand     # Expansión - Expande la lista de contenidos por defecto
     # - navigation.prune      # Poda - Quita la lista de contenidos no visibles
     - navigation.indexes    # Permite agregar varios archivos a una sección
+
+
 
     # header y anuncios
     - header.autohide
@@ -114,6 +118,12 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
 
 
 plugins: 
@@ -184,8 +194,9 @@ nav:
   - Despliegue:
     # - General:
     - despliegue/consideraciones.md
-    - despliegue/pruebas.md
     - Contenedores:
+      # - despliegue/index.md
+      - despliegue/intro.md
       - despliegue/imagenes.md
       - despliegue/python.md
       - despliegue/postgres.md
@@ -196,4 +207,5 @@ nav:
       - despliegue/tips.md
       - despliegue/mkdocs.md
 
+    - despliegue/pruebas.md
 

@@ -17,15 +17,21 @@ Estas están implementadas sobre imágenes tanto de Debian como de Alpine.
 
 ## Variables de entorno
 
-```bash
+Las configuraciones de las imágenes de gestores de bases de datos 
+se realizan mediante variables de entorno predefinidas.
+Las variables de entorno más importantes de PostgreSQL son las siguientes:
+
+
+```bash title="PostgreSQL - variables de entorno"
 POSTGRES_PASSWORD   # contraseña (OBLIGATORIA)
 POSTGRES_USER       # usuario ('postgres' por default)
 POSTGRES_DB         # nombre para nueva base de datos
 ```
 
-Una forma experimental de cargar estos datos desde el archivo Compose es la siguiente:
+Una forma experimental de cargar estos datos desde el archivo Compose 
+es bajo el atributo `environment`:
 
-```yaml
+```yaml title="Compose - variables de entorno"
 # archivo 'docker-compose.yaml'
 services:
   postgres-test:
@@ -37,7 +43,28 @@ services:
 ```
 
 sin embargo los datos sensibles quedan expuestos.
+Una opción mejor es usar archivos de configuración `.env`
+con el atributo `env_file`:
 
+```yaml title="Compose - variables de entorno en archivo"
+# archivo 'docker-compose.yaml'
+services:
+  postgres-test:
+    image: postgres
+    env_file: db.env
+```
+
+donde el archivo `db.env` trae guardadas las variables y sus valores:
+
+```py title="archivo 'db.env'"
+POSTGRES_PASSWORD=123456
+POSTGRES_USER=postgres
+POSTGRES_DB=test-db
+```
+Una segunda alternativa es el uso de los ***"secrets"*** de Docker.
+
+
+<!-- 
 !!! danger "Exposicion de datos"
 
     Los datos de configuración quedan a la vista de cualquiera con este método.
@@ -45,7 +72,7 @@ sin embargo los datos sensibles quedan expuestos.
 
      - **archivo `.env`** con las variables de entorno gardadas;
      - ***"secrets"*** de Docker.
-
+ -->
 
 
 ## Puertos
@@ -67,7 +94,8 @@ services:
     ports:
       - '9000:5432'
 ```
-en este ejemplo se expone el puerto 9000 para que Postgres pueda ser consultado.
+en este ejemplo se expone el puerto 9000 para que Postgres pueda ser consultado desde el sistema anfitrión.
+Los otros contenedores pueden consultar mediante el puerto predefinido.
 
 ## Volumenes
 
