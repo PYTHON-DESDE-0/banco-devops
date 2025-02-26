@@ -2,38 +2,36 @@ services:
 
   documentacion:
     restart: always
-    build: .   # 'Dockerfile' en la ruta actual de archivo
+    # archivos documentacion en directorio superior
+    build: ..
+    volumes:
+      - ../:/docs
     ports:
       - ${PUERTO_MKDOCS:-9003}:8000
     security_opt: 
       - label=disable
-    volumes:
-      - ./:/docs
     stdin_open: true
     tty: true
 
 
   fastapi-test:
     restart: always
-    build: tests/fastapi/
+    build: fastapi/
     ports:
       - ${PUERTO_FASTAPI:-9001}:8000
 
 
   flet-test:
     restart: always
-    build: tests/flet/
+    build: flet/
     ports:
       - ${PUERTO_FLET:-9002}:8000
-
 
 
   postgres-test:
     restart: always
     image: postgres:17.2-bookworm 
-
-    container_name: postgres-test
-
+    # container_name: postgres-test
     shm_size: 128mb 
     env_file: db.env
     ports:
@@ -42,10 +40,9 @@ services:
       - 'db-test-data:/var/lib/postgresql/data'
  
 
-
   sqlmodel-test:
-    build: tests/sqlmodel/
-    container_name: sqlmodel-test
+    build: sqlmodel/
+    # container_name: sqlmodel-test
     depends_on: 
       - postgres-test
     env_file: db.env
