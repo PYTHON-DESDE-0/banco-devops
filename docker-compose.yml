@@ -31,15 +31,28 @@ services:
   postgres-test:
     restart: always
     image: postgres:17.2-bookworm 
+
+    container_name: postgres-test
+
     shm_size: 128mb 
-    environment:
-      POSTGRES_PASSWORD:  "123456"
-      POSTGRES_USER:      "postgres"
-      POSTGRES_DB:        "test-db"
+    env_file: db.env
     ports:
       - ${PUERTO_POSTGRES:-9000}:5432
     volumes:
       - 'db-test-data:/var/lib/postgresql/data'
+ 
+
+
+  sqlmodel-test:
+    build: tests/sqlmodel/
+    container_name: sqlmodel-test
+    depends_on: 
+      - postgres-test
+    env_file: db.env
+    environment:
+      PUERTO_POSTGRES: 5432     # puerto default de Postgres (siempre abierto)
+      DOMINIO_POSTGRES: postgres-test # apunta al contenedor de PostgreSQL
+
 
 
 volumes:

@@ -4,7 +4,7 @@ from typing import Optional
 import os
 from sqlmodel import Field, Session, SQLModel, create_engine
 
-# Variables de entorno
+# Variables de entorno - con valores predefinidos
 key = "PUERTO_POSTGRES" 
 puerto = os.getenv(key, default='9000')
 key = "USUARIO_POSTGRES" 
@@ -13,6 +13,14 @@ key = "PASSW_POSTGRES"
 password = os.getenv(key, default='123456')
 key = "DATABASE_POSTGRES" 
 database = os.getenv(key, default='test-db')
+
+key = "DOMINIO_POSTGRES" 
+# dominio = os.getenv(key, default='localhost')
+dominio = os.getenv(key, default='0.0.0.0')
+
+
+ruta = f"postgresql://{user}:{password}@{dominio}:{puerto}/{database}"
+print(f"URL de base de datos: {ruta}")
 
 
 class Hero(SQLModel, table=True):
@@ -27,13 +35,10 @@ hero_2 = Hero(name="Spider-Boy", secret_name="Pedro Parqueador")
 hero_3 = Hero(name="Rusty-Man", secret_name="Tommy Sharp", age=48)
 
 
-# ruta = f"postgresql+psycopg2://{user}:{password}@localhost:{puerto}/{database}"
-ruta = f"postgresql://{user}:{password}@localhost:{puerto}/{database}"
-print(f"Ruta db: {ruta}")
-
 engine = create_engine(
     ruta,
-    echo=True
+    echo=True,
+    pool_pre_ping=True,
     )
 
 SQLModel.metadata.create_all(engine)
