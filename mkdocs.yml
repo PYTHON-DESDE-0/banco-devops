@@ -200,21 +200,21 @@ nav:
       - componentes/venv.md
       - componentes/sqlmodel.md
 
-
-
-    - Despliegue:
+    - Despliegue con contenedores:
     # - Contenedores:
       - despliegue/index.md
       # - despliegue/intro.md
       - despliegue/imagenes.md
       - despliegue/python.md
       - despliegue/postgres.md
+
+    - despliegue/pruebas.md
+
     - Borradores:
-      - despliegue/adicionales.md
+      - borradores/adicionales.md
       - borradores/servidores.md
-      - despliegue/tips.md
+      - borradores/tips.md
 
       - borradores/mkdocs.md
 
-    - despliegue/pruebas.md
 

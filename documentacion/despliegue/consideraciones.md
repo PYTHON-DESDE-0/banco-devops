@@ -1,36 +1,7 @@
 
 
-# Consideraciones preliminares
+# Consideraciones de diseño
 
-## Despliegue (*deploy*)
-
-### Modo manual
-
-El despliegue se puede realizar de manera manual (database en un servidor, backend en otro, etc.) aprovechando servicios online dedicados.
-
-### Gestores de contenedores - Docker y Podman
-
-Se piensa en el posible despliegue del sistema completo
-tanto en servidores como en equipos de desarrollo
-con la ayuda de gestores de contenedores,
-donde el más popular es Docker. 
-La alternativa inmediata es Podman, 
-el cual es altamente compatible con las imágenes de Docker 
-y tiene una sintaxis casi idéntica.
-
-El despliegue completo se configura con bastante facilidad con los archivos `compose`.
-los cuales permiten también hacer contenedores paralelos para un mejor reparto de carga de CPU,
-lo cual da cierto margen de escalabilidad.
-
-### Orquestadores de contenedores - Kubernetes
-
-Es posible pensar a futuro en el despliegue con orquestadores de contenedores como Kubernetes con ayuda de sus *manifiestos*.
-Sin embargo, debe señalarse que:
-
-- Kubernetes es considerado como sobreingeniería para sistemas pequeños y medianos: 
-no se justifica para varias miles de peticiones por segundo.
-- Kubernetes y sus implementaciones para uso en PC (K3S, Minikube, KinD) son bastante más exigentes en recursos de base que Docker o Podman. 
-- Los *manifiestos* de Kubernetes también tienen sus propias reglas y complejidades.
 
 ## Arquitectura de servicios
 
@@ -57,7 +28,6 @@ poder acomodarlos con topologías como:
 
 
 ## Componentes
-
 
 
 ### Frontend - FLET
@@ -91,3 +61,33 @@ Hay múltiples servicios online que ofrecen su despliegue.
 
 
 
+
+## Despliegue (*deploy*)
+
+### Modo manual
+
+El despliegue se puede realizar de manera manual (database en un servidor, backend en otro, etc.) aprovechando servicios online dedicados.
+
+### Gestores de contenedores - Docker y Podman
+
+Se piensa en el posible despliegue del sistema completo
+tanto en servidores como en equipos de desarrollo
+con la ayuda de gestores de contenedores,
+donde el más popular es Docker. 
+La alternativa inmediata es Podman, 
+el cual es altamente compatible con las imágenes de Docker 
+y tiene una sintaxis casi idéntica.
+
+El despliegue completo se configura con bastante facilidad con los archivos `compose`.
+los cuales permiten también hacer contenedores paralelos para un mejor reparto de carga de CPU,
+lo cual da cierto margen de escalabilidad.
+
+### Orquestadores de contenedores - Kubernetes
+
+Es posible pensar a futuro en el despliegue con orquestadores de contenedores como Kubernetes con ayuda de sus *manifiestos*.
+Sin embargo, debe señalarse que:
+
+- Kubernetes es considerado como sobreingeniería para sistemas pequeños y medianos: 
+no se justifica para varias miles de peticiones por segundo.
+- Kubernetes y sus implementaciones para uso en PC (K3S, Minikube, KinD) son bastante más exigentes en recursos de base que Docker o Podman. 
+- Los *manifiestos* de Kubernetes también tienen sus propias reglas y complejidades.

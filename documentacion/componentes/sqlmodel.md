@@ -83,33 +83,38 @@ y le asigna tres filas con los datos indicados:
 |3	|Rusty-Man	|Tommy Sharp	  | 48|
 
 
-
-
 Si la tabla ya existe,
 entonces se agregan las tres nuevas filas al final.
 
-## SQLite
 
-Nótese que la URL tiene el formato:
+## Consultas (*queries*)
 
-```http
-sqlite:///ruta_archivo
-```
+### SQLite
 
 SQLite trabaja con archivos locales
 con extensión `.db`,
 los cuales no incluyen autenticación
 ni permiso alguno.
+La URL requerida para la consulta se reduce
+
+```http
+sqlite:///ruta_archivo
+```
+
 Si el archivo no se encuentra en la ruta indicada
 entonces este se crea.
 
 
+### Gestores de bases de datos
 
-## PostgreSQL
+La mayoría de los gestores de bases de datos
+implementan un servidor para consultar la base de datos.
+La URL debe incluir
+toda la información necesaria para la conexión,
+incluyendo el nombre del driver requerido.
 
-Postgres implementa un servidor para consultar la base de datos.
-La URL debe incluir toda la información necesaria para la conexión:
-
+En el caso de tener un servidor PostgreSQL
+la petición queda como:
 
 ```http
 postgresql://usuario:contraseña@dominio:puerto/nombre_database
@@ -128,7 +133,7 @@ y la URL así conformada se usa para crear el conector:
 ```py
 engine = create_engine(
     postgres_url,       # URL a la base de datos
-    echo=True           # log por consola
+    echo=True           # log por consola (opcional)
     )
 ```
 
@@ -141,13 +146,33 @@ engine = create_engine(
     ```
 
 
+### Variables de entorno
 
+La rutina de Python 
+se adapta para poder configurar la URL.
+Los parámetros requeridos:
+dominio, puerto, usuario, contraseña, etc.
+son pasados con ayuda de variables de entorno
+precargadas en la *shell*:
 
+```py
+import os
 
+# Lectura de variables de entorno - con valores predefinidos
+user     = os.getenv("USUARIO_POSTGRES" , default='postgres')
+password = os.getenv("PASSW_POSTGRES"   , default='123456'  )
+# ...
+```
+La función `getenv()` del módulo `os`
+es la encargada de leer los valores de las variables pedidas
+y puede asignarle un valor predefinido si la variable no existe.
 
-
-
-
+La URL se compone con ayuda de un *f-string*:
+```py
+# ruta al servidor PostgreSQL
+ruta = f"postgresql://{user}:{password}@{dominio}:{puerto}/{database}"
+print(f"URL de base de datos: {ruta}")
+```
 
 
 
