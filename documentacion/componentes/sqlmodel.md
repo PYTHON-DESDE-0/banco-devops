@@ -174,5 +174,10 @@ ruta = f"postgresql://{user}:{password}@{dominio}:{puerto}/{database}"
 print(f"URL de base de datos: {ruta}")
 ```
 
+Las variables de entorno implementadas son:
 
-
+- `PUERTO_POSTGRES`
+- `DOMINIO_POSTGRES`
+- `USUARIO_POSTGRES`
+- `PASSW_POSTGRES`
+- `DATABASE_POSTGRES`

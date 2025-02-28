@@ -91,3 +91,4 @@ Sin embargo, debe señalarse que:
 no se justifica para varias miles de peticiones por segundo.
 - Kubernetes y sus implementaciones para uso en PC (K3S, Minikube, KinD) son bastante más exigentes en recursos de base que Docker o Podman. 
 - Los *manifiestos* de Kubernetes también tienen sus propias reglas y complejidades.
+

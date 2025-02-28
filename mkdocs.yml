@@ -193,7 +193,7 @@ nav:
   - Introducción: index.md
   - Despliegue:
     # - General:
-    - despliegue/consideraciones.md
+    - consideraciones.md
     - Componentes:
       - componentes/index.md
       - componentes/entorno.md
@@ -207,6 +207,7 @@ nav:
       - despliegue/imagenes.md
       - despliegue/python.md
       - despliegue/postgres.md
+      - despliegue/sqlmodel.md
 
     - despliegue/pruebas.md
 
